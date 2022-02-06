@@ -6,9 +6,11 @@ leftwristX=0;
 leftwristY=0;
 score=0;
 song_status="";
+score2=0;
+song_status2="";
 function preload(){
     song = loadSound("music1.mp3");
-    song2 = loadSound("music.mp3");
+    song2 = loadSound("peter_pan.mp3");
     
     }
 
@@ -40,7 +42,28 @@ if(song_status == false){
     document.getElementById("song_name").innerHTML="The Elegant Captain Hook";
 }
 }
+        song_status2=song2.isPlaying();
+        console.log(song_status2);
+        console.log(score2);
+        if(score2>0.2){
+            circle(rightwristX,rightwristY,30);
+        fill("red");
+        song.stop();
+        
+        if(song_status2 == false){
+            song2.play();
+            document.getElementById("song_name").innerHTML="Peter Pan Song";
         }
+        }
+
+
+
+
+
+
+
+
+}
 
         function modelLoaded(){
             console.log("Model Loaded!");
@@ -55,6 +78,8 @@ leftwristY=results[0].pose.leftWrist.y;
 rightwristX=results[0].pose.rightWrist.x;
 rightwristY=results[0].pose.rightWrist.y;
 score=results[0].pose.keypoints[9].score;
+score2=results[0].pose.keypoints[10].score;
+
 
 console.log("rightwristX = "+rightwristX+"  rightwristY = "+rightwristY);
 console.log("leftwristX = "+leftwristX+"  leftwristY = "+leftwristY);
